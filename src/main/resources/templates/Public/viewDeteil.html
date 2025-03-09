@@ -1,0 +1,28 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chi tiết sản phẩm</title>
+</head>
+
+<body>
+    <h1>View Deteil</h1>
+    <h3 th:text="${SanPhamDeteil.idSanPham}"></h3>
+    <h3 th:text="${SanPhamDeteil.User.ten}"></h3>
+    <h3 th:text="${SanPhamDeteil.LoaiSanPham.LoaiSanPham}"></h3>
+    <h3 th:text="${SanPhamDeteil.GiaTien}"></h3>
+    <h3 th:text="${SanPhamDeteil.TenSanPham}"></h3>
+    <h3 th:text="${SanPhamDeteil.SoLuong}"></h3>
+    <td ><img th:src="${SanPhamDeteil.img}" alt="" style="width: 400px; height: auto;"></td>
+    <br>
+    <a th:href="@{/}">Quay lại</a>
+    <br> 
+    <a th:href="@{/ShowOder/{id}(id=${SanPhamDeteil.idSanPham})}">Mua</a>
+    <br>
+    <a th:href="@{/AddToCart/{id}(id=${SanPhamDeteil.idSanPham})}"> Thêm vào giỏ hàng </a>
+    <br>
+
+</body>
+
+</html>

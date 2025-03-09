@@ -1,0 +1,23 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng nhập</title>
+</head>
+
+<body>
+    <h1>Login</h1>
+    <form th:action="@{/loginToSystem}" method="post">
+
+        <div>
+            <input type="text" name="Username1" placeholder="Username">
+        </div>
+        <div>
+            <input type="password" name="Password1" placeholder="Password">
+        </div>
+        <button type="submit">Login</button>
+    </form>
+</body>
+
+</html>

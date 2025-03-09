@@ -1,0 +1,17 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form th:action="@{/OderSanPham}" method="post">
+        <input type="hidden" name="IdSanPham1" th:value="${SanPhamOrder.IdSanPham}">
+        <input type="text" disabled name="TenSanPham1" placeholder="TenSanPham" th:value="${SanPhamOrder.TenSanPham}">
+        <input type="text" disabled name="LoaiSanPham1" placeholder="LoaiSanPham" th:value="${SanPhamOrder.LoaiSanPham.LoaiSanPham}">
+        <input type="number" name="SoLuong1" placeholder="Nhap so luong mua"  >
+        
+        <button type="submit" th:if="${SanPhamOrder.SoLuong > 0}">Buy</button>
+    </form>
+</body>
+</html>

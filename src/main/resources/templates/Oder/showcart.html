@@ -1,0 +1,50 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <table border="1px">
+        <tr>
+            <td>ID </td>
+            <td>Ten San Pham</td>
+            <td>Hinh Anh</td>
+            <td>Gia Tien</td>
+            <td>So Luong</td>
+            <td>Tong cong</td>
+        </tr>
+        <tr>
+            <tr th:each="s : ${CartListModel}">
+                <td th:text="${s.idSanPham}">ID</td>
+                <td th:text="${s.TenSanPham}">Ten San Pham</td>
+                <td><img  th:src="${s.img}" alt style="width: auto; height: 50px;"></td>
+                <td th:text="${s.GiaTien}">Gia Tien</td>
+                <td>
+                    <a th:href="@{/reduce/{id}(id=${s.idSanPham})}">➖</a><input th:value="${s.soLuong}" disabled style=" width: 50px">
+                    <a th:href="@{/increase/{id}(id=${s.idSanPham})}">➕</a>
+            </td>
+                <td th:text="${s.GiaTien * s.soLuong}">Tong Tien</td>
+        </tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>Tổng tiền: <h2 th:text="${session.tongTienAllSanPham}"></h2></td>
+    </table>
+    <br>
+    <div>
+        <form th:action="@{/BuySanPhamInCart}" method="get">
+           <button type="submit" th:if="${session.tongTienAllSanPham > 0}">Mua sản phẩm</button> 
+        </form>
+    </div>
+    <div>
+        <form th:action="@{/}" method="get">
+            <button type="submit">Quay lại</button>
+        </form>
+    </div>
+   
+    
+</body>
+</html>

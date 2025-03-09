@@ -1,0 +1,30 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Add</h1>
+    <div th:if="${session.UserAfterLogin !=null} "> Role: <span th:text="${session.UserAfterLogin.RoleUser}"></span>
+    <form th:action="@{/addsanphams}" method="post">
+       
+        <input type="hidden" name="UserAfterLogin" placeholder="Ten">     
+        <select name="IdLoaiSanPham1">
+            <option value="" disabled selected>Chọn Loại Sản Phẩm</option>
+            <option th:each="idLoaiSanPham1 :${ListLoaiSanPham}" th:value="${idLoaiSanPham1.idLoaiSanPham}" th:text="${idLoaiSanPham1.loaiSanPham}"></option>
+        </select>
+        <input type="number" name="GiaTien1" placeholder="GiaTien"> 
+        <input type="text" name="TenSanPham1" placeholder="TenSanPham"> 
+        <input type="number" name="SoLuong1" placeholder="SoLuong"> 
+        <input type="text" name="IMG" placeholder="IMG"> 
+        
+
+        <button type="submit">Thêm sản phẩm</button>
+    </form>
+
+</body>
+
+</html>

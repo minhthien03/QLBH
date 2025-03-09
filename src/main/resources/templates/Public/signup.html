@@ -1,0 +1,21 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Đăng ký</h1>
+    <form th:action="@{/singup}" method="post">
+        <input type="text" name="ten" placeholder="ten" >
+        <input type="text" name="username" placeholder="tên đăng nhập" >
+        <input type="password" name="password" placeholder="mật khẩu" >
+        <input type="password" name="cpassword" placeholder="nhập lại mật khẩu" >
+        <select name="roleUser">
+            <option value="User">User</option>
+            <option value="Seller">Seller</option>
+        </select>
+        <button type="submit">Sign up</button>
+    </form>
+</body>
+</html> 

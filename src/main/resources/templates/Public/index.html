@@ -1,0 +1,53 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trang Chủ</title>
+</head>
+
+<body>
+    <h1>Trang Chủ</h1>
+    <div th:if="${session.UserAfterLogin ==null} "> <a th:href="@{/login}">Login</a> / <a th:href="@{/showsignup}">Sign up</a></div>
+    <div th:if="${session.UserAfterLogin !=null} "> Hello <span th:text="${session.UserAfterLogin.ten}"></span><br>Role: <strong th:text="${session.UserAfterLogin.RoleUser}"></strong>
+        <br>
+        <a th:if="${session.UserAfterLogin !=null and (session.UserAfterLogin.RoleUser == 'User' or session.UserAfterLogin.RoleUser == 'Admin')}" th:href="@{/ShowBillByUserId}">ShowOder</a>
+        
+        <br>
+            <a th:if="${session.UserAfterLogin !=null and (session.UserAfterLogin.RoleUser == 'User' or session.UserAfterLogin.RoleUser == 'Admin')}" th:href="ShowCart">🛒</a>
+        <br>
+        <a th:href="@{/logout}">Đăng xuất</a>   
+    </div>
+    <div>
+        <form th:action="@{/searchSanPham}" method="get">
+           <input type="text" name="search" placeholder="Tìm kiếm">
+           <button type="submit" >Tìm kiếm </button> 
+        </form>
+    </div>
+    <table border="1px">
+        <!-- hien thi hang ngang <tr> -->
+        <tr>
+            <td>ID</td>
+            <td>Tên Người Bán</td>
+            <td>Loại Sản Phẩm</td>
+            <td>Tên Sản Phẩm</td>
+            <td>Ảnh</td>
+            <td>Deteil</td>
+            <td th:if="${session.UserAfterLogin !=null and session.UserAfterLogin.RoleUser == 'Seller'}">Edit</td>
+        </tr>
+        <tr th:each="SanPham : ${SanPhamList} ">
+            <td th:text="${SanPham.idSanPham}"> ID </td>
+            <td th:text="${SanPham.User.ten}">TenNguoiBan</td>
+            <td th:text="${SanPham.LoaiSanPham.loaiSanPham}">LoaiSanPham</td>
+            <td th:text="${SanPham.TenSanPham}">TenSanPham</td>
+            <td><img th:src="${SanPham.img}" alt="" style="width: auto; height: 50px;"></td>
+            <td><a th:href="@{/ViewDeteil/{id}(id=${SanPham.idSanPham})}" >View</a></td>
+            <td th:if="${session.UserAfterLogin !=null and session.UserAfterLogin.RoleUser == 'Seller'}"><a th:href="@{/ShowEdit/{id}(id=${SanPham.idSanPham})} ">Edit</a></td>
+        </tr>
+    </table>
+    
+    
+        
+</body>
+
+</html>

@@ -1,0 +1,31 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>OderList</h1>
+    <table border="1px">
+        <tr>
+            <td>ID</td>
+            <td>Ten San Pham</td>
+            <td>Hinh Anh</td>
+            <td>Gia Tien</td>
+            <td>So Luong</td>
+            <td>Tong Tien</td>
+        </tr>   
+        <tr th:each="Oder: ${OderList}">
+            <td th:text="${Oder.idBill}">ID</td>
+            <td th:text="${Oder.sanPham.TenSanPham}">Ten San Pham</td>
+            <td><img  th:src="${Oder.sanPham.img}" alt style="width: auto; height: 50px;"></td>
+            <td th:text="${Oder.sanPham.GiaTien}">Gia Tien</td>
+            <td th:text="${Oder.soLuong}">So Luong</td>
+            <td th:text="${Oder.tongTien}">Tong Tien</td>
+            
+        </tr>
+        
+    </table>
+    <a th:href="@{/}">Quay lại</a>
+</body>
+</html>

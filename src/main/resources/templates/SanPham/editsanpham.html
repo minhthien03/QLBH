@@ -1,0 +1,30 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chỉnh sửa</title>
+</head>
+
+<body>
+    <h1>Edit</h1>
+    <form th:action="@{/editsanpham}" method="post">
+        <input type="hidden" name="UserAfterLogin" placeholder="Ten" th:value="${UserAfterLogin}">
+        <input type="hidden" name="IdSanPham1" th:value="${SanPham.IdSanPham}"> 
+        <select name="IdLoaiSanPham1">
+            <option th:value="${SanPham.loaiSanPham.idLoaiSanPham}" selected th:text="${SanPham.loaiSanPham.loaiSanPham}">Chọn Loại Sản Phẩm</option>
+            <option th:each="idLoaiSanPham1:${ListLoaiSanPham}" th:value="${idLoaiSanPham1.idLoaiSanPham}" th:text="${idLoaiSanPham1.loaiSanPham}"></option>
+        </select>
+        <input type="text" name="TenSanPham1" placeholder="TenSanPham" th:value="${SanPham.TenSanPham}">
+        <input type="number" name="GiaTien1" placeholder="GiaTien" th:value="${SanPham.GiaTien}">
+        <input type="number" name="SoLuong1" placeholder="SoLuong" th:value="${SanPham.SoLuong}">
+        <input type="text" name="IMG" placeholder="IMG" th:value="${SanPham.img}">
+        
+
+        <button type="submit">Edit</button>
+        <div><img th:src="${SanPham.img}"></div>
+    </form>
+
+</body>
+
+</html>
